@@ -1,20 +1,18 @@
 package com.tencent.wxcloudrun.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import com.tencent.wxcloudrun.config.ApiResponse;
 import com.tencent.wxcloudrun.dto.CounterRequest;
 import com.tencent.wxcloudrun.model.Counter;
 import com.tencent.wxcloudrun.service.CounterService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
-import java.util.List;
 
 /**
  * counter控制器
@@ -25,12 +23,10 @@ public class CounterController {
 
   final CounterService counterService;
   final Logger logger;
-
   public CounterController(@Autowired CounterService counterService) {
     this.counterService = counterService;
     this.logger = LoggerFactory.getLogger(CounterController.class);
   }
-
 
   /**
    * 获取当前计数
@@ -44,10 +40,8 @@ public class CounterController {
     if (counter.isPresent()) {
       count = counter.get().getCount();
     }
-
     return ApiResponse.ok(count);
   }
-
 
   /**
    * 更新计数，自增或者清零
@@ -79,5 +73,5 @@ public class CounterController {
       return ApiResponse.error("参数action错误");
     }
   }
-  
+
 }
