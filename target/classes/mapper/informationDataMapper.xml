@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tencent.wxcloudrun.dao.CountersMapper">
+
+    <resultMap id="InformationMappers" type="com.tencent.wxcloudrun.model.Information">
+        <id property="id" column="id"/>
+        <result property="title" column="title" javaType="java.lang.String"/>
+        <result property="informationClassify" column="information_classify" javaType="java.lang.String" />
+        <result property="informationTime" column="information_time" javaType="java.sql.Date"  />
+        <result property="informationUrl" column="information_url" javaType="java.lang.String"  />
+    </resultMap>
+<!--    <select id="selectAllInformation" resultMap="InformationMappers" parameterType="java.lang.Integer">-->
+<!--        SELECT `id`, `title`, `information_classify`, `information_time`, `information_url`-->
+<!--        FROM Information-->
+<!--        WHERE id = #{id}-->
+<!--    </select>-->
+    <select id="selectAllInformation" resultMap="InformationMapper">
+        SELECT `id`, `count`, `createdAt`, `updatedAt`
+        FROM Information
+    </select>
+
+<!--    <delete id="clearCount" parameterType="java.lang.Integer">-->
+<!--        DELETE-->
+<!--        FROM Counters-->
+<!--        where id = #{id}-->
+<!--        limit 1-->
+<!--    </delete>-->
+
+<!--    <update id="upsertCount" parameterType="com.tencent.wxcloudrun.model.Counter">-->
+<!--        INSERT INTO `Counters`(`id`, `count`)-->
+<!--            VALUE(#{id}, #{count})-->
+<!--        ON DUPLICATE KEY UPDATE count=#{count}-->
+<!--    </update>-->
+
+</mapper>
